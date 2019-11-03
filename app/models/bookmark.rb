@@ -13,4 +13,15 @@
 #
 
 class Bookmark < ApplicationRecord
+  def dish
+    return Dish.where({id: self.dish_id})
+  end
+
+  def venue
+    return Venue.where({id: self.venue_id})
+  end
+
+  def user
+    return User.where({id: self.user_id})
+  end
 end

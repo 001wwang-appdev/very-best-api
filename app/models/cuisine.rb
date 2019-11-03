@@ -9,4 +9,12 @@
 #
 
 class Cuisine < ApplicationRecord
+  def dishes
+    return Dish.where({cuisine_id: self.id}).order('created_at')
+  end
+
+  def experts
+    return self.dishes.experts
+  end
+
 end

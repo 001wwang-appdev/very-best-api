@@ -11,4 +11,20 @@
 #
 
 class Venue < ApplicationRecord
+
+  def neighborhood
+    return Neighborhood.where({id: self.neighborhood_id})
+  end
+
+  def bookmarks
+    return Bookmark.where({venue_id: self.id})
+  end
+
+  def specialties
+    return Dish.where({id: self.bookmarks.pluck('dish_id')})
+  end
+
+  def fans
+    return User.where({id: self.bookmarks.pluck('user_id')})
+  end
 end
